@@ -4,7 +4,12 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @articles = Article.all
+    @articles = 
+      if params[:user_id].present?
+        User.find(params[:user_id]).articles
+      else
+        Article.all
+      end
   end
 
   def show; end
