@@ -17,7 +17,7 @@
 <hr>
 </form>
 
-<% if user_signed_in? %>
+<% if policy(@article).edit? %>
 <%= link_to 'Edit', edit_user_article_path(current_user, @article) %>
 <% end %>
 <%= link_to 'Back', root_path %>
