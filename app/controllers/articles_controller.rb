@@ -55,7 +55,7 @@ class ArticlesController < ApplicationController
   end
 
   def set_and_authorize_article
-    @article = Article.find(params[:id])
+    @article = Article.friendly.find(params[:id])
     authorize @article
   end
 
