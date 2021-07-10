@@ -1,4 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+<form>
+<div class="mb-3">
+  <h5>Author:</h5>
+  <p><%= @article.author_name %></p>
+</div>
+<hr>
+<div class="mb-3">
+<b>Headline:</b>
+  <p><%= @article.headline %></p>
+</div>
+<div class="mb-3">
+<b>Body:</b>
+ <p><%= @article.body %></p>
+</div>
+<hr>
+</form>
+
+<% if user_signed_in? %>
+<%= link_to 'Edit', edit_user_article_path(current_user, @article) %>
+<% end %>
+<%= link_to 'Back', root_path %>
