@@ -11,14 +11,12 @@
     </div>
   <% end %>
     <div class="mb-3">
-      <%= form.label :headline, class: "form-label" %>
-      <%= form.text_field :headline, class: "form-control" %>
+      <%= form.text_field :headline, placeholder: "Your Article Headline" %>
     </div>
     <div class="mb-3">
-      <%= form.label :body, class: "form-label" %>
-      <%= form.text_area :body, class: "form-control" %>
+      <%= form.text_field :body, placeholder: "Your Article Body" %>
     </div>
   <div class="actions">
-    <%= form.submit :submit, class: 'btn btn-success' %>
+    <%= form.submit :save %>
   </div>
 <% end %>
