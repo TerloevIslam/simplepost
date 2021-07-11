@@ -16,12 +16,11 @@
     <% @articles.each do |article| %>
       <tr>
         <td><%= link_to article.author_name, user_articles_path(article.user), class: "btn btn-outline-info btn-sm" %></td>
-        <td><%= article.headline %></td>
+        <td><%= link_to article.headline, user_article_path(article.user, article), class: "btn btn-outline-success btn-sm" %></td>
         <td><%= article.body %></td>
-        <td><%= link_to 'Show', user_article_path(article.user, article) %></td>
         <% if policy(article).edit? %>
-          <td><%= link_to 'Edit', edit_user_article_path(article.user, article) %></td>
-          <td><%= link_to 'Destroy', user_article_path(article.user, article), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Edit', edit_user_article_path(article.user, article), class: "btn btn-secondary btn-sm" %>
+          <%= link_to 'Destroy', user_article_path(article.user, article), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
         <% else %>
         <td colspan="3"></td>
         <% end %>
@@ -33,5 +32,10 @@
 <br>
 
 <% if user_signed_in? %>
-  <%= link_to 'New Article', new_user_article_path(current_user) %>
+  <%= link_to 'New Article', new_user_article_path(current_user), class: "btn btn-primary" %>
+<% end %>
+<br><br
+
+<% if params[:user_id].present? %>>
+<%= link_to 'Back', root_path, class: "btn btn-primary" %>
 <% end %>
